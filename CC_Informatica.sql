@@ -1,0 +1,44 @@
+CREATE DATABASE CT_Informatica;
+
+CREATE TABLE tbl_usuario(
+Matricula INT PRIMARY KEY IDENTITY,
+Usuario VARCHAR(10) NOT NULL UNIQUE,
+Senha VARCHAR(10) NOT NULL,
+Nome VARCHAR(50) NOT NULL,
+Email VARCHAR(50) NOT NULL,
+Cargo VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE tbl_cliente(
+ID_Cliente INT PRIMARY KEY IDENTITY,
+Nome_Cliente VARCHAR(50) NOT NULL,
+CPF VARCHAR(11) NOT NULL,
+Email VARCHAR(50) NOT NULL,
+Total_Compras INT DEFAULT 0
+);
+
+CREATE TABLE tbl_produto(
+ID_Produto INT PRIMARY KEY IDENTITY,
+Produto VARCHAR(50) UNIQUE NOT NULL,
+Tipo VARCHAR(25) NOT NULL,
+Marca VARCHAR(15),
+Quantidade INT,
+Valor_Unit DECIMAL(18,2),
+Valor_Total DECIMAL(18,2),
+Valor_Vendas DECIMAL(18,2),
+Qtd_Vendida INT
+);
+
+CREATE TABLE tbl_vendas(
+Registro INT PRIMARY KEY IDENTITY,
+Nome_Cliente VARCHAR(50),
+ID_PRODUTO INT,
+CONSTRAINT fk_CodItem FOREIGN KEY (ID_PRODUTO) REFERENCES tbl_produto (ID_PRODUTO),
+Produto VARCHAR(50),
+CONSTRAINT fk_Produto FOREIGN KEY (Produto) REFERENCES tbl_produto (Produto),
+Vendedor VARCHAR(10),
+CONSTRAINT fk_vendedor FOREIGN KEY (Vendedor) REFERENCES tbl_usuario (Usuario),
+Qtd_Item INT NOT NULL,
+Valor_Unit DECIMAL(18,2),
+Valor_Total DECIMAL(18,2)
+);

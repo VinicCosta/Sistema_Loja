@@ -1,0 +1,6 @@
+Save Format v3.0(19990112)
+@begin Targets
+ 0 "ct_informatica.pbt";
+@end;
+DefaultTarget "ct_informatica.pbt";
+DefaultRemoteTarget "ct_informatica.pbt";
